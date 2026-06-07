@@ -1,0 +1,700 @@
+<!-- OGB Design Lab - Landing Page (Mobile) -->
+<!DOCTYPE html>
+<html class="dark" lang="hu">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&amp;family=Inter:wght@400;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;family=Syne:wght@100..900&amp;display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings: "FILL" 0, "wght" 300, "GRAD" 0, "opsz" 24;
+      }
+      body {
+        background-color: #0f0f0f;
+        color: #e6e0e9;
+        scroll-behavior: smooth;
+      }
+      .precision-shadow {
+        box-shadow: 0 20px 40px 0 rgba(0, 0, 0, 0.4);
+      }
+      .bottom-border-input {
+        background: transparent;
+        border: none;
+        border-bottom: 1px solid #2d2d2d;
+        border-radius: 0;
+        padding: 12px 0;
+        transition: border-color 0.3s ease;
+      }
+      .bottom-border-input:focus {
+        outline: none;
+        border-color: #2563eb;
+        ring: 0;
+        box-shadow: none;
+      }
+    </style>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-error": "#690005",
+              tertiary: "#e7c365",
+              "error-container": "#93000a",
+              "tertiary-fixed": "#ffdf93",
+              "on-secondary-fixed-variant": "#4b4263",
+              "on-secondary-fixed": "#1f1635",
+              "surface-container": "#211f24",
+              "on-primary-fixed": "#22005d",
+              background: "#141218",
+              "secondary-fixed-dim": "#cdc0e9",
+              "on-secondary-container": "#bfb2da",
+              "inverse-surface": "#e6e0e9",
+              "on-surface": "#e6e0e9",
+              "surface-container-low": "#1d1b20",
+              "surface-tint": "#cfbcff",
+              "primary-fixed": "#e9ddff",
+              error: "#ffb4ab",
+              "inverse-on-surface": "#322f35",
+              "on-error-container": "#ffdad6",
+              "outline-variant": "#494551",
+              "surface-variant": "#36343a",
+              "on-tertiary": "#3e2e00",
+              primary: "#cfbcff",
+              "on-primary-fixed-variant": "#4f378a",
+              surface: "#141218",
+              "on-tertiary-fixed-variant": "#594400",
+              "secondary-container": "#4d4465",
+              "primary-container": "#6750a4",
+              "on-background": "#e6e0e9",
+              "on-surface-variant": "#cbc4d2",
+              secondary: "#cdc0e9",
+              "on-tertiary-container": "#503d00",
+              "secondary-fixed": "#e9ddff",
+              "on-tertiary-fixed": "#241a00",
+              "on-primary-container": "#e0d2ff",
+              "surface-container-high": "#2b292f",
+              "surface-container-lowest": "#0f0d13",
+              "inverse-primary": "#6750a4",
+              "tertiary-container": "#c9a74d",
+              "primary-fixed-dim": "#cfbcff",
+              "on-primary": "#381e72",
+              "surface-dim": "#141218",
+              "on-secondary": "#342b4b",
+              "tertiary-fixed-dim": "#e7c365",
+              outline: "#948e9c",
+              "surface-container-highest": "#36343a",
+              "surface-bright": "#3b383e",
+              "precision-blue": "#2563EB",
+              "slate-grey": "#1F1F1F",
+              "lab-divider": "#2D2D2D",
+            },
+            borderRadius: {
+              DEFAULT: "0px",
+              lg: "0px",
+              xl: "0px",
+              full: "9999px",
+            },
+            spacing: {
+              "margin-mobile": "20px",
+              gutter: "24px",
+              "container-max": "1280px",
+              unit: "8px",
+              "section-gap": "160px",
+              "margin-desktop": "64px",
+            },
+            fontFamily: {
+              "headline-xl-mobile": ["Syne"],
+              "body-lg": ["Inter"],
+              "headline-xl": ["Syne"],
+              "headline-md": ["Syne"],
+              "display-lg": ["Syne"],
+              "body-md": ["Inter"],
+              "label-sm": ["Inter"],
+            },
+            fontSize: {
+              "headline-xl-mobile": [
+                "36px",
+                { lineHeight: "1.2", fontWeight: "700" },
+              ],
+              "body-lg": ["18px", { lineHeight: "1.6", fontWeight: "400" }],
+              "headline-xl": [
+                "48px",
+                {
+                  lineHeight: "1.2",
+                  letterSpacing: "-0.02em",
+                  fontWeight: "700",
+                },
+              ],
+              "headline-md": ["24px", { lineHeight: "1.4", fontWeight: "600" }],
+              "display-lg": [
+                "80px",
+                {
+                  lineHeight: "1.1",
+                  letterSpacing: "-0.04em",
+                  fontWeight: "800",
+                },
+              ],
+              "body-md": ["16px", { lineHeight: "1.6", fontWeight: "400" }],
+              "label-sm": [
+                "12px",
+                { lineHeight: "1", letterSpacing: "0.1em", fontWeight: "600" },
+              ],
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body
+    class="bg-background text-on-background selection:bg-precision-blue selection:text-white"
+  >
+    <!-- Top Navigation -->
+    <header
+      class="fixed top-0 z-50 w-full bg-background/80 backdrop-blur-md border-b border-outline-variant"
+    >
+      <nav
+        class="flex justify-between items-center w-full px-margin-desktop py-6 max-w-container-max mx-auto"
+      >
+        <div
+          class="font-headline-md text-headline-md font-bold tracking-tighter text-on-background uppercase"
+        >
+          OGB DESIGN LAB
+        </div>
+        <div class="hidden md:flex items-center gap-10">
+          <a
+            class="text-on-surface-variant font-body-md text-body-md hover:text-primary transition-colors duration-300"
+            href="#services"
+            >Szolgáltatások</a
+          >
+          <a
+            class="text-on-surface-variant font-body-md text-body-md hover:text-primary transition-colors duration-300"
+            href="#contact"
+            >Rólam</a
+          >
+          <a
+            class="text-on-surface-variant font-body-md text-body-md hover:text-primary transition-colors duration-300"
+            href="#contact"
+            >Kapcsolat</a
+          >
+          <a
+            class="bg-[#2563EB] text-white px-8 py-3 font-label-sm text-label-sm uppercase tracking-widest hover:brightness-110 active:scale-95 transition-all inline-block"
+            href="#contact"
+            >Ajánlatkérés</a
+          >
+        </div>
+        <!-- Mobile Menu Toggle -->
+        <button class="md:hidden text-on-background">
+          <span class="material-symbols-outlined text-[#2563EB]">menu</span>
+        </button>
+      </nav>
+    </header>
+    <main>
+      <!-- Hero Section -->
+      <section
+        class="min-h-screen flex items-center justify-center pt-24 px-margin-mobile md:px-margin-desktop"
+      >
+        <div
+          class="max-w-container-max w-full text-center transition-all duration-1000 opacity-100 px-margin-mobile"
+        >
+          <p
+            class="font-label-sm text-label-sm text-[#2563EB] uppercase tracking-[0.3em] mb-8"
+            data-aos="fade-up"
+          >
+            Kreatív kísérletek. Mérnöki pontosság.
+          </p>
+          <h1
+            class="font-display-lg text-display-lg text-white mb-12 max-w-4xl mx-auto leading-none text-headline-xl"
+          >
+            Prémium arculattervezés és digitális vizuális megoldások.
+          </h1>
+          <div
+            class="flex flex-col md:flex-row gap-6 justify-center items-center"
+          >
+            <button
+              class="bg-[#2563EB] text-white px-10 py-5 font-label-sm text-label-sm uppercase tracking-widest hover:brightness-110 active:scale-95 transition-all w-full"
+              onclick="document.getElementById('contact').scrollIntoView()"
+            >
+              Projekt indítása.
+            </button>
+            <button
+              class="border border-outline-variant text-white px-10 py-5 font-label-sm text-label-sm uppercase tracking-widest hover:bg-white hover:text-black transition-all w-full"
+            >
+              Portfólió megtekintése.
+            </button>
+          </div>
+        </div>
+      </section>
+      <!-- Services Section -->
+      <section
+        class="py-section-gap px-margin-mobile md:px-margin-desktop bg-surface-container-lowest md:py-32 py-24"
+        id="services"
+      >
+        <div
+          class="max-w-container-max mx-auto transition-all duration-1000 opacity-100"
+        >
+          <div
+            class="flex justify-between items-end mb-20 border-b border-lab-divider pb-8 flex-col items-start"
+          >
+            <div>
+              <h2 class="font-headline-xl text-headline-xl text-white mb-4">
+                Laboratóriumi Szolgáltatások
+              </h2>
+              <p class="font-body-md text-body-md text-on-surface-variant">
+                Sebészi pontosság minden tervezési folyamatban.
+              </p>
+            </div>
+            <div
+              class="font-label-sm text-label-sm text-outline tracking-widest uppercase mt-8"
+            >
+              01 / 02
+            </div>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+            <!-- Service 1 -->
+            <div
+              class="bg-slate-grey precision-shadow group hover:-translate-y-2 transition-transform duration-500 p-8"
+            >
+              <span
+                class="font-label-sm text-label-sm text-[#2563EB] uppercase tracking-widest mb-6 block"
+                >OGB Lab</span
+              >
+              <h3 class="font-headline-md text-headline-md text-white mb-6">
+                Branding
+              </h3>
+              <p class="font-body-md text-body-md text-on-surface-variant mb-8">
+                Autoritatív vizuális identitások megalkotása, amelyek kitűnnek a
+                telített piacokon.
+              </p>
+              <div
+                class="h-px w-0 group-hover:w-full bg-precision-blue transition-all duration-700"
+              ></div>
+            </div>
+            <!-- Service 2 -->
+            <div
+              class="bg-slate-grey precision-shadow group hover:-translate-y-2 transition-transform duration-500 p-8"
+            >
+              <span
+                class="font-label-sm text-label-sm text-[#2563EB] uppercase tracking-widest mb-6 block"
+                >OGB Lab</span
+              >
+              <h3 class="font-headline-md text-headline-md text-white mb-6">
+                Csomagolástervezés
+              </h3>
+              <p class="font-body-md text-body-md text-on-surface-variant mb-8">
+                Prémium fizikai megnyilvánulások mérnöki pontossággal
+                megtervezve.
+              </p>
+              <div
+                class="h-px w-0 group-hover:w-full bg-precision-blue transition-all duration-700"
+              ></div>
+            </div>
+            <!-- Service 3 -->
+            <div
+              class="bg-slate-grey precision-shadow group hover:-translate-y-2 transition-transform duration-500 p-8"
+            >
+              <span
+                class="font-label-sm text-label-sm text-[#2563EB] uppercase tracking-widest mb-6 block"
+                >OGB Lab</span
+              >
+              <h3 class="font-headline-md text-headline-md text-white mb-6">
+                Nyomtatott és Digitális Média
+              </h3>
+              <p class="font-body-md text-body-md text-on-surface-variant mb-8">
+                Zökkenőmentes média megoldások platformokon átívelő dizájn
+                szabványokkal.
+              </p>
+              <div
+                class="h-px w-0 group-hover:w-full bg-precision-blue transition-all duration-700"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Projects Section (Bento Style) -->
+      <section
+        class="py-section-gap px-margin-mobile md:px-margin-desktop md:py-32"
+      >
+        <div
+          class="max-w-container-max mx-auto transition-all duration-1000 opacity-100"
+        >
+          <div class="flex justify-between items-end mb-20">
+            <h2 class="font-headline-xl text-headline-xl text-white">
+              Kiemelt Projektek
+            </h2>
+            <a
+              href="/all-projects"
+              class="font-label-sm text-label-sm uppercase tracking-widest text-white border-b border-white pb-1 hover:text-precision-blue hover:border-precision-blue transition-colors"
+            >
+              Összes projekt megtekintése
+            </a>
+          </div>
+          <div
+            class="grid grid-cols-1 md:grid-cols-12 gap-gutter gap-10 gap-12"
+          >
+            <!-- Project 1 -->
+            <div
+              class="md:col-span-8 group overflow-hidden bg-slate-grey aspect-video relative"
+            >
+              <img
+                class="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-1000"
+                data-alt="A high-contrast macro shot of a sleek, matte black cosmetic bottle with minimalist white typography. The setting is a sterile, laboratory-like studio with sharp geometric shadows and cool, neutral lighting. The visual style is premium dark minimalism, emphasizing surgical precision and luxury craftsmanship through deep blacks and sharp edges."
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDIlxaPqZE_qXNPpzPqIl8K7Is40iwXGZ7f31DFmTzifHcAdgPXwYgLa5mLRO0zmMjnfxh7azmKRdqcN6t1fwlNLbn26Q4vKccM8socT2C0Ii8BNiAe7Gml0bkjtW1FXOIwAuCAmXM2Gq5FR_KVBFsYhdNBp8jbfCS1AafelbuwOpQ2ehuvtftEd1Cz0SbVOXTved0u4Qi9e36ftkPwGwCkrlIX5PAke0uuqL5eoQN8Pr2oWeCpF9XXD3QsznH314vtc3-t6b7g3L0c"
+              />
+              <div
+                class="absolute inset-0 p-12 flex flex-col justify-end bg-gradient-to-t from-black/80 to-transparent"
+              >
+                <span
+                  class="font-label-sm text-label-sm text-[#2563EB] uppercase tracking-widest mb-2 block"
+                  >ESKÜVŐI ARCULAT</span
+                >
+                <h4 class="font-headline-md text-headline-md text-white">
+                  G&amp;E Wedding Identity
+                </h4>
+              </div>
+            </div>
+            <!-- Project 2 -->
+            <div
+              class="md:col-span-4 group overflow-hidden bg-slate-grey aspect-square relative"
+            >
+              <img
+                class="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-1000"
+                data-alt="Abstract geometric 3D rendering featuring sharp silver pyramids and translucent glass spheres floating in a dark, charcoal-colored void. The lighting is focused and dramatic, creating high-contrast reflections and crisp shadows that align with the OGB Design Lab aesthetic. The mood is sophisticated, technical, and avant-garde, representing cutting-edge digital media solutions."
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgDLdSf7krd8-JbzW5SPZ-JtEG7yQSAaEz4J_MbaI9cQrGjOPc4c3I3D610tyrydbau1cjysu9lR--5-FDIrnuxEBu3fXOLT6gS_29vb5Ue5B14Z6wPfAb_blIpCYn-xs4ErYT-JClJ1TDs3qlrqcP7rRM9flHOphMzbA8CJfyvBbUv56FzHIU24QvaBqL9cZUU9VsbeNxYRWHNFFcybbQ5y0AFoCM-KKUO0GiWR6BitGS1UYGf3ADEc4NObPDumnH38b4xvsHv0Tq"
+              />
+              <div
+                class="absolute inset-0 p-8 flex flex-col justify-end bg-gradient-to-t from-black/80 to-transparent pb-10"
+              >
+                <span
+                  class="font-label-sm text-label-sm text-[#2563EB] uppercase tracking-widest mb-2 block"
+                  >INTÉZMÉNYI LOGÓ</span
+                >
+                <h4
+                  class="font-headline-md text-headline-md text-white leading-tight"
+                >
+                  BBTE Digitális Média Intézet
+                </h4>
+              </div>
+            </div>
+            <!-- Project 3 -->
+            <div
+              class="md:col-span-12 group overflow-hidden bg-slate-grey h-[400px] relative"
+            >
+              <img
+                class="w-full h-full object-cover opacity-50 group-hover:scale-105 transition-transform duration-1000"
+                data-alt="A wide-angle interior view of a futuristic design studio workspace, featuring ultra-wide monitors displaying complex wireframes and high-end typography. The room is bathed in moody, low-ambient light with precision blue neon accents highlighting the clean architectural lines. The aesthetic is monochromatic and professional, evoking a sense of intense focus and technological superiority."
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDlGvsT-kLLJeWshIDFeVvdHW4b6X_hVQ1l2fjHctUg9VYvYi_pY-Zhz9CdIYVUHKYG1ct6SCD8rpi_BMOHFeFLHGqCTFJQAtgfO4VrAmarGlw_mILXw3KybNZ0AVjTcU8yyQXFCkw6P7SP9ya2bW55_umu66RjxEZB9d2sbJd_1kVDVqCDNswzQZxQd8uDlxHtF2nBdzxT34PT-ijtH7KVpgOvI-d3gnjuU0AfUX5XMY19o2897ll2QnUl61eLmV7WBB8p5Ee6mAi8"
+              />
+              <div
+                class="absolute inset-0 p-12 flex flex-col justify-end bg-gradient-to-t from-black/80 to-transparent"
+              >
+                <span
+                  class="font-label-sm text-label-sm text-[#2563EB] uppercase tracking-widest mb-2 block"
+                  >RUHÁZAT / MERCH</span
+                >
+                <h4 class="font-headline-md text-headline-md text-white">
+                  Keresztény Pulóver Kollekció
+                </h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Contact Section -->
+      <section
+        class="py-section-gap px-margin-mobile md:px-margin-desktop md:py-32"
+        id="contact"
+      >
+        <div
+          class="max-w-container-max mx-auto transition-all duration-1000 opacity-100"
+        >
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-24 gap-12">
+            <div>
+              <h2 class="font-display-lg text-headline-xl text-white mb-8">
+                Ajánlatkérés
+              </h2>
+              <p
+                class="font-body-lg text-body-lg text-on-surface-variant mb-12 max-w-md"
+              >
+                Készen állsz a digitális szintlépésre? Jelenleg korlátozott
+                számban fogadunk megbízásokat 2026-ra.
+              </p>
+              <div class="space-y-8">
+                <div>
+                  <p
+                    class="font-label-sm text-label-sm text-[#2563EB] uppercase tracking-[0.3em] mb-4"
+                  >
+                    A Kreatív Folyamat
+                  </p>
+                  <p class="font-headline-md text-headline-md text-white">
+                    Kolozsvár, Románia
+                  </p>
+                </div>
+                <div>
+                  <p
+                    class="font-label-sm text-label-sm text-[#2563EB] uppercase tracking-[0.3em] mb-4"
+                  >
+                    Kapcsolat
+                  </p>
+                  <p class="font-headline-md text-headline-md text-white">
+                    design.gergoolah@gmail.com
+                  </p>
+                </div>
+              </div>
+            </div>
+            <form
+              class="space-y-12 bg-slate-grey precision-shadow p-8"
+              id="inquiryForm"
+            >
+              <div class="group">
+                <label
+                  class="font-label-sm text-label-sm text-outline uppercase group-focus-within:text-precision-blue transition-colors"
+                  >Név (Példa János)</label
+                >
+                <input
+                  class="w-full bottom-border-input text-white font-body-md"
+                  id="formName"
+                  placeholder="John Doe"
+                  required=""
+                  type="text"
+                />
+              </div>
+              <div class="group">
+                <label
+                  class="font-label-sm text-label-sm text-outline uppercase group-focus-within:text-precision-blue transition-colors"
+                  >E-mail (pelda@pelda.com)</label
+                >
+                <input
+                  class="w-full bottom-border-input text-white font-body-md"
+                  id="formEmail"
+                  placeholder="john@example.com"
+                  required=""
+                  type="email"
+                />
+              </div>
+              <div class="group">
+                <label
+                  class="font-label-sm text-label-sm text-outline uppercase group-focus-within:text-precision-blue transition-colors"
+                  >Projektrészletek</label
+                >
+                <textarea
+                  class="w-full bottom-border-input text-white font-body-md"
+                  id="formDetails"
+                  placeholder="Írd le a víziódat, mire van szükséged..."
+                  required=""
+                  rows="3"
+                ></textarea>
+              </div>
+              <div class="group">
+                <label
+                  class="font-label-sm text-label-sm text-outline uppercase group-focus-within:text-precision-blue transition-colors"
+                  >Költségvetés</label
+                >
+                <textarea
+                  class="w-full bottom-border-input text-white font-body-md"
+                  id="formBudget"
+                  placeholder="Milyen költségvetési kereted van rá?"
+                  required=""
+                  rows="2"
+                ></textarea>
+              </div>
+              <button
+                class="w-full bg-[#2563EB] text-white py-5 font-label-sm text-label-sm uppercase tracking-widest hover:brightness-110 active:scale-95 transition-all"
+                type="submit"
+              >
+                Ajánlat küldése
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+    <div
+      class="fixed inset-0 z-[60] hidden flex items-center justify-center p-6"
+      id="archiveModal"
+    >
+      <div
+        class="absolute inset-0 bg-background/60 backdrop-blur-xl"
+        onclick="toggleArchiveModal(false)"
+      ></div>
+      <div
+        class="relative bg-surface-container-highest border border-outline-variant w-full max-w-4xl max-h-[80vh] overflow-y-auto p-12 shadow-2xl"
+      >
+        <div class="flex justify-between items-center mb-12">
+          <h2
+            class="font-headline-xl text-headline-md text-white uppercase tracking-tighter"
+          >
+            PROJEKT ARCHÍVUM
+          </h2>
+          <button
+            class="text-white hover:text-precision-blue transition-colors"
+            onclick="toggleArchiveModal(false)"
+          >
+            <span class="material-symbols-outlined">close</span>
+          </button>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div
+            class="border-b border-outline-variant pb-4 group cursor-pointer"
+          >
+            <p class="font-label-sm text-[#2563EB] mb-2">2025 / LOGÓ</p>
+            <h4
+              class="font-headline-md text-white group-hover:text-precision-blue transition-colors"
+            >
+              Zenith Identity System
+            </h4>
+          </div>
+          <div
+            class="border-b border-outline-variant pb-4 group cursor-pointer"
+          >
+            <p class="font-label-sm text-[#2563EB] mb-2">2024 / WEB</p>
+            <h4
+              class="font-headline-md text-white group-hover:text-precision-blue transition-colors"
+            >
+              Ethereal Digital Platform
+            </h4>
+          </div>
+          <div
+            class="border-b border-outline-variant pb-4 group cursor-pointer"
+          >
+            <p class="font-label-sm text-[#2563EB] mb-2">2024 / PRINT</p>
+            <h4
+              class="font-headline-md text-white group-hover:text-precision-blue transition-colors"
+            >
+              Vanguard Annual Report
+            </h4>
+          </div>
+          <div
+            class="border-b border-outline-variant pb-4 group cursor-pointer"
+          >
+            <p class="font-label-sm text-[#2563EB] mb-2">2023 / PACKAGING</p>
+            <h4
+              class="font-headline-md text-white group-hover:text-precision-blue transition-colors"
+            >
+              Noir Fragrance Series
+            </h4>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Footer -->
+    <footer class="border-t border-outline-variant bg-surface-container-lowest">
+      <div
+        class="flex flex-col md:flex-row justify-between items-center w-full px-margin-desktop py-margin-desktop max-w-container-max mx-auto text-center gap-12"
+      >
+        <div
+          class="font-headline-md text-headline-md font-bold text-on-background mb-8 md:mb-0"
+        >
+          OGB DESIGN LAB
+        </div>
+        <div
+          class="flex flex-wrap justify-center gap-8 font-body-md text-body-md uppercase tracking-widest text-on-surface-variant gap-6"
+        >
+          <a class="hover:text-precision-blue transition-colors" href="#"
+            >Adatvédelem</a
+          >
+          <a class="hover:text-precision-blue transition-colors" href="#"
+            >Feltételek</a
+          >
+          <a class="hover:text-precision-blue transition-colors" href="#"
+            >Stúdió</a
+          >
+        </div>
+        <div class="mt-8 md:mt-0 font-label-sm text-outline w-full pt-8 mt-12">
+          © 2024 OGB LAB
+        </div>
+      </div>
+    </footer>
+    <script>
+      // Form Submission Logic
+      document
+        .getElementById("inquiryForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const name = document.getElementById("formName").value;
+          const email = document.getElementById("formEmail").value;
+          const details = document.getElementById("formDetails").value;
+          const budget = document.getElementById("formBudget").value;
+
+          const recipient = "design.gergoolah@gmail.com";
+          const subject = encodeURIComponent("Új ajánlatkérés: " + name);
+          const body = encodeURIComponent(
+            `Név: ${name}\n` +
+              `E-mail: ${email}\n\n` +
+              `Projekt részletei:\n${details}\n\n` +
+              `Költségvetés:\n${budget}`
+          );
+
+          window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
+        });
+
+      // Subtle Parallax & Intersection Observer for animations
+      const observerOptions = {
+        threshold: 0.1,
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("opacity-100");
+            entry.target.classList.remove("opacity-0", "translate-y-10");
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll("section > div").forEach((el) => {
+        el.classList.add(
+          "transition-all",
+          "duration-1000",
+          "opacity-0",
+          "translate-y-10"
+        );
+        observer.observe(el);
+      });
+
+      // Sticky Nav state change on scroll
+      window.addEventListener("scroll", () => {
+        const header = document.querySelector("header");
+        if (window.scrollY > 50) {
+          header.classList.add("py-4");
+          header.classList.remove("py-6");
+        } else {
+          header.classList.add("py-6");
+          header.classList.remove("py-4");
+        }
+      });
+    </script>
+    <script>
+      function toggleArchiveModal(show) {
+        const modal = document.getElementById("archiveModal");
+        const main = document.querySelector("main");
+        const header = document.querySelector("header");
+
+        if (show) {
+          modal.classList.remove("hidden");
+          main.classList.add("blur-md", "pointer-events-none");
+          header.classList.add("blur-md", "pointer-events-none");
+          document.body.style.overflow = "hidden";
+        } else {
+          modal.classList.add("hidden");
+          main.classList.remove("blur-md", "pointer-events-none");
+          header.classList.remove("blur-md", "pointer-events-none");
+          document.body.style.overflow = "";
+        }
+      }
+    </script>
+  </body>
+</html>

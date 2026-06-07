@@ -1,0 +1,626 @@
+<!-- OGB Design Lab - Portfólió Archívum (Mobile) -->
+<!DOCTYPE html>
+<html class="dark" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&amp;family=Inter:wght@400;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;family=Syne:wght@100..900&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "precision-blue": "#2563EB",
+              "on-error": "#690005",
+              tertiary: "#e7c365",
+              "error-container": "#93000a",
+              "tertiary-fixed": "#ffdf93",
+              "on-secondary-fixed-variant": "#4b4263",
+              "on-secondary-fixed": "#1f1635",
+              "surface-container": "#211f24",
+              "on-primary-fixed": "#22005d",
+              background: "#141218",
+              "secondary-fixed-dim": "#cdc0e9",
+              "on-secondary-container": "#bfb2da",
+              "inverse-surface": "#e6e0e9",
+              "on-surface": "#e6e0e9",
+              "surface-container-low": "#1d1b20",
+              "surface-tint": "#cfbcff",
+              "primary-fixed": "#e9ddff",
+              error: "#ffb4ab",
+              "inverse-on-surface": "#322f35",
+              "on-error-container": "#ffdad6",
+              "outline-variant": "#494551",
+              "surface-variant": "#36343a",
+              "on-tertiary": "#3e2e00",
+              primary: "#cfbcff",
+              "on-primary-fixed-variant": "#4f378a",
+              surface: "#141218",
+              "on-tertiary-fixed-variant": "#594400",
+              "secondary-container": "#4d4465",
+              "primary-container": "#6750a4",
+              "on-background": "#e6e0e9",
+              "on-surface-variant": "#cbc4d2",
+              secondary: "#cdc0e9",
+              "on-tertiary-container": "#503d00",
+              "secondary-fixed": "#e9ddff",
+              "on-tertiary-fixed": "#241a00",
+              "on-primary-container": "#e0d2ff",
+              "surface-container-high": "#2b292f",
+              "surface-container-lowest": "#0f0d13",
+              "inverse-primary": "#6750a4",
+              "tertiary-container": "#c9a74d",
+              "primary-fixed-dim": "#cfbcff",
+              "on-primary": "#381e72",
+              "surface-dim": "#141218",
+              "on-secondary": "#342b4b",
+              "tertiary-fixed-dim": "#e7c365",
+              outline: "#948e9c",
+              "surface-container-highest": "#36343a",
+              "surface-bright": "#3b383e",
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+            spacing: {
+              "margin-mobile": "20px",
+              gutter: "24px",
+              "container-max": "1280px",
+              unit: "8px",
+              "section-gap": "160px",
+              "margin-desktop": "64px",
+            },
+            fontFamily: {
+              "headline-xl-mobile": ["Syne"],
+              "body-lg": ["Inter"],
+              "headline-xl": ["Syne"],
+              "headline-md": ["Syne"],
+              "display-lg": ["Syne"],
+              "body-md": ["Inter"],
+              "label-sm": ["Inter"],
+            },
+            fontSize: {
+              "headline-xl-mobile": [
+                "36px",
+                { lineHeight: "1.2", fontWeight: "700" },
+              ],
+              "body-lg": ["18px", { lineHeight: "1.6", fontWeight: "400" }],
+              "headline-xl": [
+                "48px",
+                {
+                  lineHeight: "1.2",
+                  letterSpacing: "-0.02em",
+                  fontWeight: "700",
+                },
+              ],
+              "headline-md": ["24px", { lineHeight: "1.4", fontWeight: "600" }],
+              "display-lg": [
+                "80px",
+                {
+                  lineHeight: "1.1",
+                  letterSpacing: "-0.04em",
+                  fontWeight: "800",
+                },
+              ],
+              "body-md": ["16px", { lineHeight: "1.6", fontWeight: "400" }],
+              "label-sm": [
+                "12px",
+                { lineHeight: "1", letterSpacing: "0.1em", fontWeight: "600" },
+              ],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      body {
+        background-color: #141218;
+      }
+      .material-symbols-outlined {
+        font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+      }
+      .precision-border {
+        border: 1px solid rgba(148, 142, 156, 0.2);
+      }
+      .project-card:hover .project-overlay {
+        opacity: 1;
+      }
+      .custom-scrollbar::-webkit-scrollbar {
+        width: 6px;
+      }
+      .custom-scrollbar::-webkit-scrollbar-track {
+        background: #141218;
+      }
+      .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: #2563eb;
+      }
+    </style>
+  </head>
+  <body
+    class="font-body-md text-on-background selection:bg-precision-blue selection:text-white custom-scrollbar"
+  >
+    <!-- Navigation -->
+    <header
+      class="fixed top-0 left-0 w-full z-50 bg-background/90 backdrop-blur-md border-b border-outline-variant"
+    >
+      <nav
+        class="flex justify-between items-center w-full px-margin-desktop py-6 max-w-container-max mx-auto"
+      >
+        <div
+          class="font-headline-md font-bold tracking-tighter text-on-background text-body-md"
+        >
+          OGB DESIGN LAB
+        </div>
+        <div class="hidden md:flex gap-8">
+          <a
+            class="text-on-surface-variant font-body-md text-body-md hover:text-precision-blue transition-colors duration-300"
+            href="#"
+            >Szolgáltatások</a
+          >
+          <a
+            class="text-on-surface-variant font-body-md text-body-md hover:text-precision-blue transition-colors duration-300"
+            href="#"
+            >Rólunk</a
+          >
+          <a
+            class="text-on-surface-variant font-body-md text-body-md hover:text-precision-blue transition-colors duration-300"
+            href="#"
+            >Kapcsolat</a
+          >
+        </div>
+        <div class="flex items-center gap-6">
+          <a
+            class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-variant transition-colors p-2"
+            href="index.html"
+          >
+            <span class="material-symbols-outlined text-on-surface">close</span>
+          </a>
+          <button
+            class="bg-precision-blue text-white py-2 font-body-md font-bold hover:brightness-110 active:scale-95 transition-all px-4"
+          >
+            Ajánlatkérés
+          </button>
+        </div>
+      </nav>
+    </header>
+    <main
+      class="pt-32 pb-section-gap max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop"
+    >
+      <!-- Header Section -->
+      <div class="mb-16 border-b border-outline-variant pb-8">
+        <h1
+          class="font-display-lg md:text-display-lg uppercase tracking-tighter text-headline-md"
+        >
+          PORTFÓLIÓ
+        </h1>
+        <p class="text-on-surface-variant mt-4 max-w-xl text-body-md">
+          A precizitás és a kreativitás metszéspontja. Válogatott munkáink
+          archívuma, kategorizálva az identitástervezéstől a digitális
+          élményekig.
+        </p>
+      </div>
+      <!-- Categories & Grid -->
+      <div class="space-y-32">
+        <!-- category: ESKÜVŐI ARCULAT -->
+        <section>
+          <div class="flex items-center gap-4 mb-8">
+            <span class="w-8 h-px bg-precision-blue"></span>
+            <h2
+              class="font-headline-md uppercase tracking-widest text-precision-blue text-headline-md"
+            >
+              ESKÜVŐI ARCULAT
+            </h2>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div
+              class="project-card relative group aspect-[4/3] overflow-hidden precision-border bg-surface-container"
+            >
+              <img
+                alt="G&amp;E Meghívó Szett"
+                class="w-full h-full object-cover transition-all duration-700"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDY6l1naNMF1udDqIdQG079kcg7S80oWbeJf1_6fVKGWtwQwhpUdDnSdIqU-bwUYJ64bpY9wjwR4XBkX2ev0fZTQAAoKDgvImwAullOeqVTAkSmyfpCJC9E4TImc_O2oRN2YPm0Qt2gDdhwMo3pqz6TXoY07brY9zCf1F5r_QMFj5BECf735HfUapOvWTfDhH_UB-XaAk1YXitcK8MEsKQVeCa5Kf0MJleXaHY9SatDb4IFntO78Jbc_3pCRnXCg3p3s-Gj2hymQagv"
+              />
+              <div
+                class="project-overlay absolute inset-0 bg-background/80 opacity-0 transition-opacity duration-300 flex flex-col justify-end p-6"
+              >
+                <p class="text-precision-blue font-label-sm mb-1 uppercase">
+                  Esküvői Meghívó
+                </p>
+                <h3 class="font-headline-md text-white">
+                  G&amp;E Meghívó Szett
+                </h3>
+              </div>
+            </div>
+            <div
+              class="project-card relative group aspect-[4/3] overflow-hidden precision-border bg-surface-container"
+            >
+              <img
+                alt="G&amp;E Pecsét és Dekor"
+                class="w-full h-full object-cover transition-all duration-700"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgkyqYVPzHQEpptMW2v7cwPotcIqlO7wRPqEbzINmD6snD993bEVdmr9R1PiTUhETIWKKrQUQwHOPvgRlXzP93XhN4PsGknOQHKA5TF-zmshcCOAOH_Eq89_LAjjeAxH77e6swi1Trto6WKz8imVVoBtzbMqEYuCodrknfUvOXLyHgNdhdcYzZKsBfg4flo_uTdXGIf7b7YYdA_xbDcA1GBvZt6mLgeEmuw74i8JS4TJRbpLQPFjQQPW2jR76_TrLBJ1Y61-kiZKcr"
+              />
+              <div
+                class="project-overlay absolute inset-0 bg-background/80 opacity-0 transition-opacity duration-300 flex flex-col justify-end p-6"
+              >
+                <p class="text-precision-blue font-label-sm mb-1 uppercase">
+                  Esküvői Arculat
+                </p>
+                <h3 class="font-headline-md text-white">
+                  G&amp;E Pecsét és Dekor
+                </h3>
+              </div>
+            </div>
+            <div
+              class="project-card relative group aspect-[4/3] overflow-hidden precision-border bg-surface-container"
+            >
+              <img
+                alt="Digitális Vendégkönyv"
+                class="w-full h-full object-cover transition-all duration-700"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXKNlX1iLka07JrSUFPz4TejGp_UyVynAWNxPOpvdAAnp4IPQZG40kKA2e_SjakFIqt_kBLaBSZ1fkwLbkWfUPTza59aWlIUz-Sl5JL9lIGnDGDKoSrAdNObBO1AAiQDRtb3kHEMwzOyjq_V-jmNIqHF-2n0vuUMVxHXKWrD6BrVgeyaQwhB5HLB38iLqoLTx4_ACLygFDY9YBj5qohm5nHcS6SlIV7VMwNqVVWAb2iw_7veN9ZTu-BLEY8t4OYQ1oMHE7RbnUKL86"
+              />
+              <div
+                class="project-overlay absolute inset-0 bg-background/80 opacity-0 transition-opacity duration-300 flex flex-col justify-end p-6"
+              >
+                <p class="text-precision-blue font-label-sm mb-1 uppercase">
+                  Digitális Interakció
+                </p>
+                <h3 class="font-headline-md text-white">G&amp;E Vendégkönyv</h3>
+              </div>
+            </div>
+            <div
+              class="project-card relative group aspect-[4/3] overflow-hidden precision-border bg-surface-container"
+            >
+              <img
+                alt="Vendéglista 1"
+                class="w-full h-full object-cover transition-all duration-700"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_1MDq6wxMY_nUuEky76aM60IhDKdLrC8uL7ilFhTC4cSmLbPiffhogRUdwblXy0YGMdpPt_wcanHPDLWOc5y7bheiTOZq9HRxv26lwPqjoHRc0LFJODJTi4jFW8qYFRN8fRuQaGTIzbLrjvpGEGWUw88nWa7Nhz0qeBtl7lIVPB-FUVmVeAe0ucyKE5ZQl1tV-kOhe-HetrB7G9gtIrBe0PS30p83hSC-5bXvRPDiTsYWMebcZswHbJ93ZkpyjLONIgoNSiOl07YP"
+              />
+              <div
+                class="project-overlay absolute inset-0 bg-background/80 opacity-0 transition-opacity duration-300 flex flex-col justify-end p-6"
+              >
+                <p class="text-precision-blue font-label-sm mb-1 uppercase">
+                  Vendéglista
+                </p>
+                <h3 class="font-headline-md text-white">
+                  Tipográfiai Ültetési Rend 1
+                </h3>
+              </div>
+            </div>
+            <div
+              class="project-card relative group aspect-[4/3] overflow-hidden precision-border bg-surface-container"
+            >
+              <img
+                alt="Vendéglista 2"
+                class="w-full h-full object-cover transition-all duration-700"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCb8RtTZl3bwo49S0UpMN5E7aGOZxpEevEmWKAq8Ny9Ynff0tMWmCaQWkDWWSK0aYmH9viNsq0YczfDDrTQU_5U2C82oY5v9E_KdhMXSBO7h64DLGB8g1tXNfdfFawKeqncBxJX5YqnqGtb0GH3MZwW9aBIgnlBfVPTdKc2LFGhebVekhq5Fzn4ivr0PkVd8_5NwnMU7P4bwERPzZU7QMlUEAa8gBpistUVJsU9EpEOa1Gw_j3bihLviUQtbBXYkXvneZvqh08JXlLw"
+              />
+              <div
+                class="project-overlay absolute inset-0 bg-background/80 opacity-0 transition-opacity duration-300 flex flex-col justify-end p-6"
+              >
+                <p class="text-precision-blue font-label-sm mb-1 uppercase">
+                  Vendéglista
+                </p>
+                <h3 class="font-headline-md text-white">
+                  Tipográfiai Ültetési Rend 2
+                </h3>
+              </div>
+            </div>
+            <div
+              class="project-card relative group aspect-[4/3] overflow-hidden precision-border bg-surface-container"
+            >
+              <img
+                alt="Photobooth G&amp;E"
+                class="w-full h-full object-cover transition-all duration-700"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBA1IoIHUzLhWyhwSBoiTGTQKov-0f_6IVmMW4skjw9yUCncCf-5Y1he8mUCaTp-bnCTx_h2x-gQzIquMmqdyHCqcMuvFlIDnfcD97N5kZgvZ5HGu2g8rTVS3o52gkb8bjpzkcxA5klpCHI1yVaCv1ktnuGZXdsFG-LE_Mz4AQTWYC5tVuI6N8EFv1QTy0cyA04Faa1Z0jz1mhoEL0TudwhI7z5NcB9tFvIHIZaB_squyDD3vgRiRCraccVj0QiwD-bDe6bvQsDZARu"
+              />
+              <div
+                class="project-overlay absolute inset-0 bg-background/80 opacity-0 transition-opacity duration-300 flex flex-col justify-end p-6"
+              >
+                <p class="text-precision-blue font-label-sm mb-1 uppercase">
+                  Emléktervezés
+                </p>
+                <h3 class="font-headline-md text-white">Photobooth G&amp;E</h3>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- category: INTÉZMÉNYI LOGÓ -->
+        <section>
+          <div class="flex items-center gap-4 mb-8">
+            <span class="w-8 h-px bg-precision-blue"></span>
+            <h2
+              class="font-headline-md uppercase tracking-widest text-precision-blue text-headline-md"
+            >
+              INTÉZMÉNYI LOGÓ
+            </h2>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div
+              class="project-card relative group aspect-square overflow-hidden precision-border bg-surface-container"
+            >
+              <img
+                alt="Digitális Média"
+                class="w-full h-full object-cover transition-all duration-700"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwc2g0IUoG2hKuD5py7WhMaIft2RcyT0XU7DOnCJgEWImC4XcOFpuySa1vkyawnGA65NtvBlgeQQCp2d37QJei0ZVc5FK_inVc7vlahmBUelOP-xCh2XdGLnf20we-2O5isRtAK0fuYfVO6b5Dcx5OEWNA4OVPRnLhPCzhOsZx_zR3x66DXNJO_g49IlQPaI-i_13mZKOAylYFd0Fio9ynLqYa1bRcOABZexDJXgXpFgB9nQRhVfILt-Au9B93z8YVEDOlGGtzhzMB"
+              />
+              <div
+                class="project-overlay absolute inset-0 bg-background/80 opacity-0 transition-opacity duration-300 flex flex-col justify-end p-6"
+              >
+                <p class="text-precision-blue font-label-sm mb-1 uppercase">
+                  Logo Design
+                </p>
+                <h3 class="font-headline-md text-white">Digitális Média</h3>
+              </div>
+            </div>
+            <div
+              class="project-card relative group aspect-square overflow-hidden precision-border bg-surface-container"
+            >
+              <img
+                alt="Digitalis media 2"
+                class="w-full h-full object-cover transition-all duration-700"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7pyedk2SUiIkwMbyTBmvevsWS1l-zKMsGHqe43x3z_0eLTp_kklBGF4-u5hM4XsONYiJ7jFqvBMKJdXldOJ7QmWZvDw5jLDgUfiSfoW5FDChPEGtJZ2ThMKpG1lBZ5Q9GFEe_jfC3MDoReUSRBehYAKDwJCUNjmy0hDgXpajCLl4lDELd9J_xP76zk6zp1ikzyVHwoYqK577XAvM5KntT8I39zzSAPc4GaEgz2hvtypnU13H2FLW-HUKVchajYJ4lFkyRobD4_Hgq"
+              />
+              <div
+                class="project-overlay absolute inset-0 bg-background/80 opacity-0 transition-opacity duration-300 flex flex-col justify-end p-6"
+              >
+                <p class="text-precision-blue font-label-sm mb-1 uppercase">
+                  Institutional Identity
+                </p>
+                <h3 class="font-headline-md text-white">
+                  BBTE Magyar Digitális Média
+                </h3>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- category: RUHÁZAT / MERCH -->
+        <section>
+          <div class="flex items-center gap-4 mb-8">
+            <span class="w-8 h-px bg-precision-blue"></span>
+            <h2
+              class="font-headline-md uppercase tracking-widest text-precision-blue text-headline-md"
+            >
+              CÉGES ARCULAT &amp; LOGÓ
+            </h2>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div
+              class="project-card relative group aspect-square overflow-hidden precision-border bg-surface-container"
+            >
+              <img
+                alt="Compart Quality First"
+                class="w-full h-full object-cover transition-all duration-700"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAr_ttTP_D0XOBuUHF2PDB0wu438KMaCgUm60EqpWxqclehmrLrJki_XV78_QLCpn7kQ1zC1672axioIxJhyou8YZ1v4St3SLgOXLQNpqBEpFVSvD8iu-sV8svp5bJM71iIYtEFbrZbUa0wJI4V2p4rmqZhZ6pTxw63lPFKB_D965DVKNYAqNMTttKFdc_-kCnju_KzwZkMUGPkh1dwT5PnyugjcCUu0PFOE6NAftZx-dJMtL2svOkBt6uFOm4ZgLzcJDipWKflyNco"
+              />
+              <div
+                class="project-overlay absolute inset-0 bg-background/80 opacity-0 transition-opacity duration-300 flex flex-col justify-end p-6"
+              >
+                <p class="text-precision-blue font-label-sm mb-1 uppercase">
+                  Arculattervezés
+                </p>
+                <h3 class="font-headline-md text-white">
+                  Compart Quality First
+                </h3>
+              </div>
+            </div>
+            <div
+              class="project-card relative group aspect-square overflow-hidden precision-border bg-surface-container"
+            >
+              <img
+                alt="CEEBC Consultation"
+                class="w-full h-full object-cover transition-all duration-700"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDICkrwYpaxtU5IrEbP6JQdHXNu0bhAae-EXPcjbUuwfntRRi5FHZ2ZFg4KaKpX-xVTWooWzcnO9iepHsz7E4DFJsRRdRepwOwoHX5s0_aGBhW_5EciERETa4InoE1i_GIbzWp87_xyBlcGA8GXYukcECaoZ1hGyZD1g3mzSbWUwPo6D7ZycXyRfZ1bLf5KX2qCNy1X8KjJG-YW7BwnB8NMdSE5E-xu4cAzBuztB45QLnMot7YI4fVxVQ0noWOBJX-wtjY73mRWm1TT"
+              />
+              <div
+                class="project-overlay absolute inset-0 bg-background/80 opacity-0 transition-opacity duration-300 flex flex-col justify-end p-6"
+              >
+                <p class="text-precision-blue font-label-sm mb-1 uppercase">
+                  Logo Design
+                </p>
+                <h3 class="font-headline-md text-white">CEEBC Consultation</h3>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section>
+          <div class="flex items-center gap-4 mb-8">
+            <span class="w-8 h-px bg-precision-blue"></span>
+            <h2
+              class="font-headline-md uppercase tracking-widest text-precision-blue text-headline-md"
+            >
+              KERESZTÉNY LOGÓ &amp; GRAFIKA
+            </h2>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div
+              class="project-card relative group aspect-square overflow-hidden precision-border bg-surface-container"
+            >
+              <img
+                alt="BiFe - Bibliai Felfedező"
+                class="w-full h-full object-cover transition-all duration-700"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAL-c5dA4escNbIMzMI9IPwxxVYR35AhEdKX5Wo1Fn_6DdzrtZKknThkxnKjBQ4w759JZFuu-haV1RmHr1WPq6NjCWLe2wEtzoztMRIgjDmDU6UkIyox39VOt8FAlgBYq0RJlLHxS9_xgPMciC7hF98hWI3SmtAKBOntolsusp0QNoBA7cKaYsVPrkJgimnv_-N7msr_VqYi5gXvc5lyAmk3OhAEfENgX9rvuwYgAN_DQjcvhTjz8_ATk3rqy3FEwM3InKWATIiZbSw"
+              />
+              <div
+                class="project-overlay absolute inset-0 bg-background/80 opacity-0 transition-opacity duration-300 flex flex-col justify-end p-6"
+              >
+                <p class="text-precision-blue font-label-sm mb-1 uppercase">
+                  Arculattervezés
+                </p>
+                <h3 class="font-headline-md text-white">
+                  BiFe - Bibliai Felfedező
+                </h3>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section>
+          <div class="flex items-center gap-4 mb-8">
+            <span class="w-8 h-px bg-precision-blue"></span>
+            <h2
+              class="font-headline-md uppercase tracking-widest text-precision-blue text-headline-md"
+            >
+              RUHÁZAT / MERCH
+            </h2>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div
+              class="project-card relative group aspect-[3/4] overflow-hidden precision-border bg-surface-container"
+            >
+              <img
+                alt="Praise Him Hoodie"
+                class="w-full h-full object-cover transition-all duration-700"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7yJyl8RDAwNva_kQAPp2xDi1Oauo0bMWioCh9E8OIcpgrec_FJ2_VKsDgRdHVphRXAjVytZVkETGQt2-gYVS0vbdYUWhiWOp3omPT8srbjldk9IeP57SU-41OxgLV6kfmwB9m7l5tNeOi75ATo-xIwzEjCXnOTrhu1OzcnKohdJMBoqIfX8XzYIUtWFKaRVtL2sK25f7J94eaDDATtghJRxtm0I2iQ_XlyFYzdrVisc_4rKsohjsxAQs0TlTvnoeTU3ChEZ0FCj1g"
+              />
+              <div
+                class="project-overlay absolute inset-0 bg-background/80 opacity-0 transition-opacity duration-300 flex flex-col justify-end p-6"
+              >
+                <p class="text-precision-blue font-label-sm mb-1 uppercase">
+                  Apparel Design
+                </p>
+                <h3 class="font-headline-md text-white">Praise Him Hoodie</h3>
+              </div>
+            </div>
+            <div
+              class="project-card relative group aspect-[3/4] overflow-hidden precision-border bg-surface-container"
+            >
+              <img
+                alt="God is Good Hoodie"
+                class="w-full h-full object-cover transition-all duration-700"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDI7uqlbt14X4a1kSQPXt5nE89VvgL4ZUSgWQ8KwhbbVPVHKPb-CTDJ4cfGZTXxDWv8kSRZ6ZYYZBBJ-T9YzkMnLIft0q4OpiglINML4MQbS9M1Cn_NF5HLnLFrslC6Fx_7N7UBzY18XkkV0RGpFHMoXJQ4F6l5d02wtSKxNpTWiY1MpqVkz_LpXRc36Ntd6pIFg3i0Fp35gADJ9wz4OJaUIQaluK69xYR39mWJPNCgpSssnX_22VS24YJuK6A6f25-Zz4p4ZgnPwH6"
+              />
+              <div
+                class="project-overlay absolute inset-0 bg-background/80 opacity-0 transition-opacity duration-300 flex flex-col justify-end p-6"
+              >
+                <p class="text-precision-blue font-label-sm mb-1 uppercase">
+                  Merchandise
+                </p>
+                <h3 class="font-headline-md text-white">God is Good Hoodie</h3>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- category: KIADVÁNYTERVEZÉS -->
+        <section>
+          <div class="flex items-center gap-4 mb-8">
+            <span class="w-8 h-px bg-precision-blue"></span>
+            <h2
+              class="font-headline-md uppercase tracking-widest text-precision-blue text-headline-md"
+            >
+              KIADVÁNYTERVEZÉS
+            </h2>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div
+              class="project-card relative group aspect-[3/4] overflow-hidden precision-border bg-surface-container"
+            >
+              <img
+                alt="Szamok 1-16"
+                class="w-full h-full object-cover transition-all duration-700"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuALYXDMEAr8w75AuRLAXygmyKH3Mxx8gDXdVP6JR4HCCCAQ95TWhf1RZl0Q8bYa9oM34Mi43nvrRWmwjhVLXqs3k6p8BHdW607YD7A8HB9Dk2IcxtAOQ-Ku2rupTkd61cZDHeavkQxQhgcUR-yytqwlnDqgNIRUt83CvOply9yf8St6L09xE6Nlx1JpoL7-QNSMYC35TDD99Dh1z34Ef0HdN7MnyPDpcxbha6C0pYZ8MXGp-RGwlQ603J9CppbG9jYGC1MsvNEDaMtc"
+              />
+              <div
+                class="project-overlay absolute inset-0 bg-background/80 opacity-0 transition-opacity duration-300 flex flex-col justify-end p-6"
+              >
+                <p class="text-precision-blue font-label-sm mb-1 uppercase">
+                  Oktatási Segédlet
+                </p>
+                <h3 class="font-headline-md text-white">Számkártyák 1-16</h3>
+              </div>
+            </div>
+            <div
+              class="project-card relative group aspect-[3/4] overflow-hidden precision-border bg-surface-container"
+            >
+              <img
+                alt="Szamok 17-31"
+                class="w-full h-full object-cover transition-all duration-700"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPh9P1pc-dpiz-t6lgUeW7B0qfIDsI2BfGxb9xS24zHQstUFUaO0ONXPjkBALFCnDktQR5lMTjuovwKI3cX4a06G0mbXIeJ3d68_Ju0luOWni4wEKa-jMTkLY2CSTzY7n5_ar68mWyUAAFHEuLjovio-62UbluNQe0CNB-uGqUk4ELKyrN37MxocMO7BLILT1zdqmYBPmxFB6cYVuuZ-He2OX7dA0KxHsT_kHT_6lspmmME67py-hD7bpwdJ1T2ib341CKfXyca59Q"
+              />
+              <div
+                class="project-overlay absolute inset-0 bg-background/80 opacity-0 transition-opacity duration-300 flex flex-col justify-end p-6"
+              >
+                <p class="text-precision-blue font-label-sm mb-1 uppercase">
+                  Oktatási Segédlet
+                </p>
+                <h3 class="font-headline-md text-white">Számkártyák 17-31</h3>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- category: TERMÉK & CÍMKETERVEZÉS -->
+        <section>
+          <div class="flex items-center gap-4 mb-8">
+            <span class="w-8 h-px bg-precision-blue"></span>
+            <h2
+              class="font-headline-md uppercase tracking-widest text-precision-blue text-headline-md"
+            >
+              TERMÉK &amp; CÍMKETERVEZÉS
+            </h2>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div
+              class="project-card relative group aspect-square overflow-hidden precision-border bg-surface-container"
+            >
+              <img
+                alt="házi bió"
+                class="w-full h-full object-cover transition-all duration-700"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZsRgHNk_ZPpV0AT5OFWgpxLSXdLes5kcJx6a4YhUBQFTsFnODfYj0Jre_E_0wJYoD5iDN3lC6Rxp-jWqeSd8WE489caLJfbLIigziOkufif2IJb-VuWK7WY4RXLF0GSDWzNonQbfLzYc6pnydwNsEkzd_2vaHi5V-z1pDxe2GDMGNINA7cB-wWQ6P4LEewKaY72IC0bRm1SLglxJMkZB5krEV9vY5qXd0_63S0MU34ehhmCqVG8-h8pU6fbIJAOTyUBtWViIMmWU9"
+              />
+              <div
+                class="project-overlay absolute inset-0 bg-background/80 opacity-0 transition-opacity duration-300 flex flex-col justify-end p-6"
+              >
+                <p class="text-precision-blue font-label-sm mb-1 uppercase">
+                  Címketervezés
+                </p>
+                <h3 class="font-headline-md text-white">Házi Bió Szörp</h3>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+    <!-- Main Footer -->
+    <footer class="border-t border-outline-variant bg-surface-container-lowest">
+      <div
+        class="flex flex-col md:flex-row justify-between items-center w-full px-margin-desktop py-margin-desktop max-w-container-max mx-auto px-margin-mobile"
+      >
+        <div
+          class="font-headline-md text-headline-md font-bold text-on-background mb-8 md:mb-0"
+        >
+          OGB DESIGN LAB
+        </div>
+        <div
+          class="flex flex-wrap justify-center gap-8 font-body-md text-body-md uppercase tracking-widest text-on-surface-variant gap-4"
+        >
+          <a class="hover:text-precision-blue transition-colors" href="#"
+            >Adatvédelem</a
+          >
+          <a class="hover:text-precision-blue transition-colors" href="#"
+            >Feltételek</a
+          >
+          <a class="hover:text-precision-blue transition-colors" href="#"
+            >Stúdió</a
+          >
+        </div>
+        <div class="mt-8 md:mt-0 font-label-sm text-outline">
+          © 2024 OGB LAB
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
